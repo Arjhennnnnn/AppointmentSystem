@@ -15,17 +15,29 @@
               <form action="/store" method="post">
                   @csrf
                   <div class="col-12 py-2 wow fadeInLeft w-100">
-                      <input type="text" class="form-control" name="name" placeholder="FullName">
+                      <input type="text" class="form-control" name="name" placeholder="FullName" value="{{old('name')}}">
                   </div>
+                  @error('name')
+                  <p class="text-danger text-start ms-3">{{ $message }}</p>
+                  @enderror
                   <div class="col-12 py-2 wow fadeInRight w-100">
-                      <input type="email" class="form-control" name="email" placeholder="Email Address">
+                      <input type="email" class="form-control" name="email" placeholder="Email Address" value="{{old('email')}}">
                   </div>
+                  @error('email')
+                  <p class="text-danger text-start ms-3">{{ $message }}</p>
+                  @enderror
                   <div class="col-12 py-2 wow fadeInLeft w-100">
-                      <input type="password" class="form-control" name="password" placeholder="Password">
+                      <input type="password" class="form-control" name="password" placeholder="Password" value="{{old('password')}}">
                   </div>
+                  @error('password')
+                  <p class="text-danger text-start ms-3">{{ $message }}</p>
+                  @enderror
                   <div class="col-12 py-2 wow fadeInRight w-100">
-                      <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
+                      <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" value="{{old('password_confirmation')}}">
                   </div>
+                  @error('password_confirmation')
+                  <p class="text-danger text-start ms-3">{{ $message }}</p>
+                  @enderror
                   <div class="col-12 py-2 wow fadeInRight w-100">
                       <button type="submit" class="btn btn-primary w-100">Register</button>
                   </div>

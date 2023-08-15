@@ -1,5 +1,15 @@
 <!-- Back to top button -->
 @props(['section'])
+{{-- @if(session()->has('message'))
+<div class="col-11 ms-4 alert alert-success w-100" role="alert">
+    {{ session('message') }}
+</div>
+@endif --}}
+@if(session()->has('message'))
+<div class="col-12 alert alert-success w-100 text-center" role="alert">
+    {{ session('message') }}
+</div>
+@endif
 <div class="back-to-top"></div>
 <header>
   <div class="topbar">
@@ -47,23 +57,37 @@
 
       <div class="collapse navbar-collapse" id="navbarSupport">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="doctors.html">Doctors</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="blog.html">News</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-
-        @auth
+          @auth
+          @if(Auth()->user()->usertype == 'admin')
+            <li class="nav-item">
+              <a class="nav-link" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/request">Request</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/show">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/history">History</a>
+            </li>
+          @else
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="doctors.html">Doctors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          @endif
         <form action="/logout" method="post">
             @csrf
             <div class="dropdown">
@@ -88,6 +112,23 @@
             </div>
         </form>
         @else
+
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="doctors.html">Doctors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="blog.html">News</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+
         <li class="nav-item">
             <a class="btn btn-primary ml-lg-3" href="/register">Register</a>
             <a class="btn btn-primary ml-lg-3" href="/login">Login</a>

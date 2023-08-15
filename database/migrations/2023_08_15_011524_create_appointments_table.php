@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->string('name');
             $table->string('appointment_detail');
-            $table->string('appointment_date');
-            $table->string('appointment_time');
+            $table->string('appointment_start');
+            $table->string('appointment_end');
             $table->string('phone');
             $table->string('message');
             $table->unsignedInteger('status');

@@ -1,8 +1,7 @@
-<div class="page-section">
+@auth
+<div class="page-section" id="appointment_section">
     <div class="container">
       <h1 class="text-center wow fadeInUp">Make an Appointment</h1>
-
-
       <form class="main-form" method="post" action="/create/appointment">
         @csrf
         <div class="row mt-5">
@@ -42,3 +41,6 @@
       </form>
     </div>
   </div> <!-- .page-section -->
+  @else
+
+  @endauth
